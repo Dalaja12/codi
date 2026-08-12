@@ -347,8 +347,8 @@ body.sleep-bg .eyebrow {
 }
 
 .eye {
-    width: 90px;
-    height: 120px;
+    width: 75px;
+    height: 105px;
     background: #0ff;
     border-radius: 50%;
     box-shadow: 0 0 30px #0ff;
@@ -360,8 +360,8 @@ body.sleep-bg .eyebrow {
 
 .pupil {
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     background: #000;
     border-radius: 50%;
     top: 50%;
@@ -424,7 +424,7 @@ body.sleep-bg .eyebrow {
    ============================================ */
 
 .mouth {
-    width: 190px;
+    width: 180px;
     height: 60px;
     background: #FF0000;
     border-radius: 0 0 100px 100px;
@@ -479,7 +479,7 @@ body.sleep-bg .eyebrow {
 
 /* SORPRENDIDO */
 .mouth.surprised {
-    height: 100px;
+    height: 90px;
     border-radius: 60%;
 }
 
@@ -3621,8 +3621,8 @@ body.sleep-bg .eyebrow {
 
     /* Ojos móvil */
     .bmo-screen .eyes-container .eye {
-        width: 110px !important;
-        height: 150px !important;
+        width: 80px !important;
+        height: 120px !important;
         box-shadow: 0 0 30px #0ff !important;
     }
 
@@ -3660,8 +3660,8 @@ body.sleep-bg .eyebrow {
     }
 
     .bmo-screen .mouth {
-        width: 205px !important;
-        height: 66px !important;
+        width: 195px !important;
+        height: 56px !important;
     }
 
     .bmo-screen .mouth.happy::before {
@@ -3679,12 +3679,12 @@ body.sleep-bg .eyebrow {
     }
 
     .bmo-screen .mouth.surprised {
-        height: 110px !important;
+        height: 90px !important;
     }
 
     .bmo-screen .mouth.surprised::after {
-        width: 95px !important;
-        height: 60px !important;
+        width: 70px !important;
+        height: 35px !important;
     }
 
     .bmo-screen .mouth.sleep {
