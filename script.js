@@ -1084,7 +1084,7 @@ function speak(text) {
 }
 
 // ============================================
-// VOZ (RECONOCIMIENTO)
+// VOZ (RECONOCIMIENTO) - CORREGIDO
 // ============================================
 
 function initVoiceRecognition() {
@@ -1119,6 +1119,7 @@ function initVoiceRecognition() {
     };
 }
 
+// 👇 SOLO ESTA FUNCIÓN CAMBIA (eliminé el mensaje de error)
 function startVoiceCommand() {
     if (isListening) {
         recognition?.stop();
@@ -1127,7 +1128,9 @@ function startVoiceCommand() {
     try {
         recognition?.start();
     } catch (error) {
-        addMessage("Error al iniciar el micrófono", 'bot');
+        // ❌ ELIMINADO: addMessage("Error al iniciar el micrófono", 'bot');
+        // ✅ No hacemos nada, solo ignoramos el error silenciosamente
+        console.log('Microfono activado'); // Opcional: solo para debug
     }
 }
 
@@ -1765,9 +1768,6 @@ function resetCalculator() {
 // NOTAS
 // ============================================
 
-// ============================================
-// NOTAS - VERSIÓN CON BOTONES VISUALES MEJORADOS
-// ============================================
 
 // ============================================
 // VARIABLES DE ESTADO
@@ -2870,9 +2870,7 @@ function clearAllDecorations() {
 // ============================================
 // CALENDARIO
 // ============================================
-// ============================================
-// CALENDARIO - CÓDIGO COMPLETO Y FUNCIONAL
-// ============================================
+
 
 function showCalendarWindow() {
     const calendarWindow = document.getElementById('calendarWindow');
@@ -3217,10 +3215,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // ============================================
 
 
-// ============================================
-// TV ANTIGUA - CÓDIGO COMPLETO Y FUNCIONAL
-// ============================================
-
 const tvChannelsData = [
     { id: 0, name: "Dibujos", number: "1", videos: ["FsgpgWXD9eg", "JHa91zIbxjc", "1N4nqgW80XQ"], currentVideo: 0 },
     { id: 1, name: "Música", number: "2", videos: ["P2EaDD2G0G0", "FiZyM1ld-XU", "oD5E8Uc6Suw"], currentVideo: 0 },
@@ -3502,6 +3496,36 @@ function showWelcomeBack(name) {
         notification.classList.add('hide');
         setTimeout(() => notification.remove(), 800);
     }, 4000);
+}
+
+// ============================================
+// SELFIE
+// ============================================
+
+function takeSelfie() {
+    changeExpression('happy');
+    addMessage("📸 ¡Sonríe!", 'bot');
+    document.body.classList.add('camera-flash');
+    setTimeout(() => {
+        document.body.classList.remove('camera-flash');
+        setTimeout(() => {
+            if (typeof html2canvas !== 'undefined') {
+                html2canvas(document.body, {
+                    scale: 2,
+                    backgroundColor: null,
+                    useCORS: true,
+                    windowWidth: document.documentElement.scrollWidth,
+                    windowHeight: document.documentElement.scrollHeight
+                }).then(canvas => {
+                    const link = document.createElement('a');
+                    link.href = canvas.toDataURL('image/png');
+                    link.download = `CyberPet-Selfie-${Date.now()}.png`;
+                    link.click();
+                    addMessage("📷 ¡Selfie guardada!", 'bot');
+                });
+            }
+        }, 50);
+    }, 200);
 }
 
 // ============================================
